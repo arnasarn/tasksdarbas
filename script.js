@@ -7,7 +7,7 @@ const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 const buildCards = () => {
     cardsWrapper.innerHTML = "";
 
-    [...tasks].reverse().forEach((task, index) => {
+    [...tasks].reverse().forEach((task) => {
         const taskTitle = document.createElement("h3");
         taskTitle.textContent = task.title;
         taskTitle.setAttribute("class", "card-title");
@@ -16,6 +16,10 @@ const buildCards = () => {
         taskCard.setAttribute("class", "card");
     
         taskCard.addEventListener("click", () => {
+            const index = tasks.findIndex(item => {
+                return item.title === task.title;
+            })
+
             console.log(task.title);
             console.log(tasks.findIndex(t => {
                 return t.title === task.title} ));
